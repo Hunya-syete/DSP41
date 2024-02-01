@@ -1,0 +1,25 @@
+years_in_service = int(input("Enter number of years in service: "))
+office = input("Enter office (IT, Accounting, HR): ")
+
+if office == "IT":
+    if years_in_service > 10:
+        incentives = 10000
+    else:
+        incentives = 5000
+elif office == "Accounting":
+    if years_in_service > 10:
+        incentives = 12000
+    else:
+        incentives = 6000
+elif office == "HR":
+    if years_in_service > 10:
+        incentives = 10000
+    else:
+        incentives = 7500
+else:
+    incentives = 0
+
+if incentives > 0:
+    print(f"Employee in {office} office with {years_in_service} years in service is eligible for {incentives} incentives.")
+else:
+    print("Employee is not eligible for incentives based on the given conditions.")
