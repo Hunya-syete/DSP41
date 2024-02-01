@@ -1,0 +1,20 @@
+name = input("Enter your name: ")
+math = float(input("Enter Math grade: "))
+science = float(input("Enter Science grade: "))
+english = float(input("Enter English grade: "))
+
+average = (math + science + english) / 3
+
+print("\nName:", name)
+print("Math:", math)
+print("Science:", science)
+print("English:", english)
+print("Average:", f"{average:.1f}")
+
+
+if average >= 75:
+    print("Congratulations! You passed the semester.")
+    if english < 75:
+        print("But you need to re-enroll in the English subject.")
+else:
+    print("Sorry, You Failed the semester.")
