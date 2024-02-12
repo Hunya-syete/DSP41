@@ -1,0 +1,13 @@
+class Car:
+    def __init__(self, color, model, manufacturer):
+        self.color, self.model, self.manufacturer = color, model, manufacturer
+
+cars = [Car("Purple", "Gallado", "Lamborgini"), Car("Blue", "Mochielago", "Lamborgini"), Car("Black", "Corvet", "Poison-X")]
+
+for car in cars:
+    print(f"Color={car.color}, Model={car.model}, Manufacturer={car.manufacturer}")
+
+cars[0].color, cars[0].model = "white-black", "slimshady"
+
+print("\nAfter modification:")
+print(f"Color={cars[0].color}, Model={cars[0].model}, Manufacturer={cars[0].manufacturer}")
