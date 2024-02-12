@@ -1,0 +1,12 @@
+number = random.randint(1, 20)
+max_attempts = 3
+
+for _ in range(max_attempts):
+    user_guess = int(input('Guess the number (1-20): '))
+    
+    if user_guess == number:
+        print('Congratulations! You guessed it.')
+        break
+    print('Too low. Try again.' if user_guess < number else 'Too high. Try again.')
+else:
+    print(f"Sorry, you're out of attempts. The correct number was {number}.")
