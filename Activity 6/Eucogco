@@ -1,0 +1,17 @@
+import numpy as np
+from scipy.signal import resample
+
+def stretch_wave(wave, stretch_factor):
+   
+    original_framerate = wave.framerate
+    original_duration = wave.duration
+
+    new_framerate = original_framerate * stretch_factor
+    new_duration = original_duration / stretch_factor
+    
+
+    new_wave = resample(wave.samples, int(new_framerate * new_duration))
+    
+    new_wave_obj = wave._replace(samples=new_wave, framerate=new_framerate, duration=new_duration)
+    
+    return new_wave_obj
