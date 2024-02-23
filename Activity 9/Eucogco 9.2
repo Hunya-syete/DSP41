@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+from thinkdsp import Chirp, normalize, unbias, SawtoothSignal
+
+class SawtoothChirp(Chirp):
+    def evaluate(self, ts):
+        freqs = self.start + np.diff(ts) * np.linspace(0, self.framerate / 2, len(ts)-1)
+        ys = normalize(unbias(SawtoothSignal(freqs).evaluate(ts)))
+        return ys
+
+# Create a SawtoothChirp signal
+signal = SawtoothChirp(start=220, end=880)
+wave = signal.make_wave(duration=1, framerate=11025)
+
+# Plot the waveform
+wave.plot()
+plt.show()
+
+# Plot the spectrogram
+wave.make_spectrogram(256).plot(high=1000)
+plt.show()
