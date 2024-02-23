@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from thinkdsp import TriangleSignal, Wave
+
+# 1. triangle signal with frequency 440 duration 0.01
+wave = TriangleSignal(440).make_wave(duration=0.01)
+wave.plot()
+plt.show()
+
+# 2. Spectrum object and print spectrum.hs[0].
+spectrum = wave.make_spectrum()
+print("Amplitude and phase of component with frequency 0:", spectrum.hs[0])
+
+# 3. Make a Wave from the modified Spectrum and plot it. Set spectrum.hs[0] = 100.
+spectrum.hs[0] = 100
+modified_wave = spectrum.make_wave()
+modified_wave.plot()
+plt.show()
