@@ -1,0 +1,27 @@
+import speech_recognition as sr
+
+r = sr.Recognizer()
+def get_default_microphone():
+    mic_list = sr.Microphone.list_microphone_names()
+    default_device = mic_list[0] if mic_list else None
+    return default_device
+
+def listen():
+    default_device = get_default_microphone()
+    if default_device:
+        print(f"Using default microphone: {default_device}")
+        with sr.Microphone() as source:
+            print("Utter forth a proclamation!")
+            r.adjust_for_ambient_noise(source)
+            audio = r.listen(source, timeout=5)
+            try:
+                text = r.recognize_google(audio)
+                print("Thou art spoken: " + text)
+            except sr.UnknownValueError:
+                print("Mine ears did strain to comprehend the utterance")
+            except sr.RequestError as e:
+                print("Error: {0}".format(e))
+    else:
+        print("Hark! Thy device doth declare, No microphone hath been discovered. Pray, attend to thy microphone configuration.")
+
+listen()
